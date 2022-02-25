@@ -25,7 +25,8 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 <img src="https://github.com/alyssa1303/Flix/blob/master/Flix.gif" width=300><br>
 
 ### Notes
-Describe any challenges encountered while building the app.
+- The biggest challenge is trying to find resources that use Kotlin instead of Java or converting Java code to Kotlin code. 
+- There were many bugs caused by typo that took me such a long time to figure out because the debugger didn't always specific the right line that caused the trouble. 
 
 ### Open-source libraries used
 
