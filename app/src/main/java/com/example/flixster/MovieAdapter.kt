@@ -51,7 +51,9 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
 
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
-            Glide.with(context).load(imageUrl).into(tvPoster)
+            Glide.with(context)
+                .load(imageUrl)
+                .into(tvPoster)
         }
 
     }
