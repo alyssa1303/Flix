@@ -34,11 +34,11 @@ class MainActivity : AppCompatActivity() {
                 Log.e(TAG, "onFailure $statusCode")
             }
 
-            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
                 Log.i(TAG, "onSuccess: JSON data $json")
 
                 try {
-                    val movieJsonArray = json!!.jsonObject.getJSONArray("results")
+                    val movieJsonArray = json.jsonObject.getJSONArray("results")
                     movies.addAll(Movie.fromJsonArray(movieJsonArray))
                     movieAdapter.notifyDataSetChanged()
                     Log.i(TAG, "Movie list $movies")

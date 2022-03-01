@@ -44,19 +44,29 @@ class DetailActivity : YouTubeBaseActivity() {
                 Log.e(TAG, "onFailure: $statusCode")
             }
 
-            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
                 Log.i(TAG, "onSuccess")
-
+                var results = json.jsonObject.getJSONArray("results")
+                if (results.length() == 0) {
+                    Log.w(TAG, "No movie trailer available")
+                    return
+                } else {
+                    val movieTrailer = results.getJSONObject(0)
+                    val youtubeKey = movieTrailer.getString("key")
+                    initializeYoutube(youtubeKey)
+                }
             }
         })
+    }
 
+    private fun initializeYoutube(youtubeKey: String) {
         ytPlayerView.initialize(YOUTUBE_API_KEY, object: YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
                 provider: YouTubePlayer.Provider?,
                 player: YouTubePlayer?,
                 p2: Boolean
             ) {
-                player?.cueVideo("5xVh-7ywKpE")
+                player?.cueVideo(youtubeKey)
 
             }
 
