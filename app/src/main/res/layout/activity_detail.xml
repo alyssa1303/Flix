@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:transitionName="movie"
     tools:context=".DetailActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
@@ -15,6 +16,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        android:transitionName="poster"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -24,6 +26,7 @@
 
     <RatingBar
         android:id="@+id/rvVoteAverage"
+        android:transitionName="title"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,6 +40,7 @@
 
     <TextView
         android:id="@+id/tvOverview"
+        android:transitionName="overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -1,5 +1,7 @@
 package com.example.flixster
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -7,11 +9,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.util.Pair
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+
 
 const val MOVIE_EXTRA = "MOVIE_EXTRA"
 private const val TAG = "MovieAdapter"
@@ -63,15 +67,21 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
             itemView.setOnClickListener(this)
         }
 
+
         override fun onClick(v: View?) {
             // 1. Get notified of which movie was tapped on
             val movie = movies[adapterPosition]
             // Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show()
 
-            // 2. Launch intent to nagivate to the new activity view
+            // 2. Launch intent to navigate to the new activity view
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(MOVIE_EXTRA, movie)
-            context.startActivity(intent)
+            // val p1 = Pair.create(tvPoster as View?, "poster")
+            // val p2 = Pair.create(tvTitle as View?, "title")
+            // val p3 = Pair.create(tvOverview as View?, "overview")
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as Activity, itemView, "movie")
+            context.startActivity(intent, options.toBundle())
         }
 
     }
